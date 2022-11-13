@@ -2,18 +2,49 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-
+class DBUtil {
+	
+	
+	public static Connection provideConnection() {
+		
+		Connection conn = null;
+		
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		String url= "jdbc:mysql://localhost:3306/busticket";
+		
+		try {
+			conn = DriverManager.getConnection(url, "root", "007ranjeet");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return conn;
+	}
+}
 
 public class bus {
 	public bus() {
 		
 	}
+	
 	 public static void main(String[] args) throws Exception {
     	 try {
  			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -59,7 +90,7 @@ public class bus {
 	static void fft() throws Exception {
 		try (Scanner scanner = new Scanner(System.in)) {
 			bus b1=new bus();
-			Connection conn=  DriverManager.getConnection("jdbc:mysql://localhost:3306/busticket","root","007ranjeet");
+			Connection conn=DBUtil.provideConnection();
 			System.out.println("Admin Log in");
 			System.out.println("User Name :" );
 			System.out.println("=========");
@@ -160,7 +191,6 @@ public class bus {
 								String c3=cde.getString("location");
 								String c4=cde.getString("tol");
 								String c5=cde.getString("bus_type");
-								String cb5=cde.getString("seats");
 								int c6=cde.getInt("mob");
 								String c7=cde.getString("dtime");
 								String c8=cde.getString("atime");
@@ -206,7 +236,7 @@ public class bus {
 	}
 	void show() throws Exception {
 		bus b1=new bus();
-		Connection conn=  DriverManager.getConnection("jdbc:mysql://localhost:3306/busticket","root","007ranjeet");
+		Connection conn=DBUtil.provideConnection();
 		Statement st= conn.createStatement();
 		Scanner scanner=new Scanner(System.in);
 		PreparedStatement Obuytkt=conn.prepareStatement("select * from bus ");
@@ -250,7 +280,7 @@ scanner.close();
 				}
 			}
 			if(a1>=1) {
-				Connection conn=  DriverManager.getConnection("jdbc:mysql://localhost:3306/busticket","root","007ranjeet");
+				Connection conn=DBUtil.provideConnection();
 				Statement st= conn.createStatement();
 				PreparedStatement Obuytkt=conn.prepareStatement("select * from bus ");
 				ResultSet obi=Obuytkt.executeQuery();
@@ -277,7 +307,7 @@ scanner.close();
 	void re() throws Exception{
 		bus b1=new bus();
 		
-		Connection conn=  DriverManager.getConnection("jdbc:mysql://localhost:3306/busticket","root","007ranjeet");
+		Connection conn=DBUtil.provideConnection();
 		Statement st= conn.createStatement();
 		Scanner scanner=new Scanner(System.in);
 		PreparedStatement Obuytkt=conn.prepareStatement("select * from bus ");
