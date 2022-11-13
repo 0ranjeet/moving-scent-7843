@@ -8,7 +8,7 @@ Insert into login_data(username,password) value
 ('2admin','123admin'),
 ('23admin','admin23’);
 
--- Bus table
+
 Create table bus(
 busname varchar(20),
 Location varchar(20),
@@ -19,8 +19,8 @@ booked int,
 Departure_time varchar(10),
 Arrival_time varchar(10)
 );
---Customer data table
-> Create table customer(
+
+Create table customer(
 cname varchar(20),
 Bname varchar(20),
 Location varchar(20),
