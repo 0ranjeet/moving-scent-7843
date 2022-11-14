@@ -367,7 +367,7 @@ scanner.close();
 								System.out.printf("\n| %-10s  | %-10s | %-10s  | %-10s | %-10s  | %-10s | %-10s  | %-10s |",obn, oobf,oobt,obty,obs,obbk,obda,obat,"\n" );
 								System.out.println();
 								System.out.printf("+-----------------------------------------------------------------------------------------------------------+");
-								st.executeUpdate("insert into customer(cname,bname,location,tol,Bus_type,Seats,Mob,dtime,atime ,confirmed ) values('"+cn+"','"+obn+"','"+obf+"','"+obt+"','"+obty+"',"+obbk+",'"+tel+"','"+obda+"','"+obat+"',False)");
+								st.executeUpdate("insert into customer(cname,bname,location,tol,Bus_type,Mob,dtime,atime ,confirmed ) values('"+cn+"','"+obn+"','"+obf+"','"+obty+"',"+obbk+",'"+tel+"','"+obda+"','"+obat+"',False)");
 								}
 								
 								b1.bkbybn(sList);
