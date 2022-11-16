@@ -1,2 +1,2 @@
 # moving-scent-7843
-A bus ticket registraion system.
+A console base bus ticket registraion system.
